@@ -6,8 +6,10 @@ from surya.detection import DetectionPredictor
 import time
 import cv2
 import pyperclip
+import os
+from datetime import datetime
 
-# Matches Hiragana (\u3040–\u309F), Katakana (\u30A0–\u30FF), Kanji (\u4E00–\u9FFF)
+# Match only Hiragana (\u3040–\u309F), Katakana (\u30A0–\u30FF), Kanji (\u4E00–\u9FFF)
 def extract_japanese(text):
     return "".join(re.findall(r'[\u3040-\u30FF\u4E00-\u9FFF]+', text))
 
@@ -17,13 +19,13 @@ if __name__ == "__main__":
     recognition_predictor = RecognitionPredictor()
     detection_predictor = DetectionPredictor()
 
-    # Start webcam capture
-    cap = cv2.VideoCapture(3)
+    # Start camera capture
+    cap = cv2.VideoCapture(0)
     if not cap.isOpened():
-        print("❌ Failed to open webcam.")
+        print("❌ Failed to open camera")
         exit()
 
-    print("📸 Starting OCR loop...")
+    print("📸 Starting OCR...")
 
     # Webcam capture loop
     try:
@@ -52,11 +54,18 @@ if __name__ == "__main__":
                 pyperclip.copy(text_to_copy)
                 print("📋 Text copied to clipboard!")
             
+            # Create output folder and save scanned frames
+            os.makedirs("scans", exist_ok=True)
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            filename = f"scans/scan_{timestamp}.png"
+            cv2.imwrite(filename, frame)
+            print(f"🖼️ Saved scan as: {filename}")
+
             # Time until next capture
-            time.sleep(5)
+            time.sleep(3)
 
     except KeyboardInterrupt:
-        print("⛔ Interrupted manually.")
+        print("⛔ Interrupted manually")
 
     finally:
         cap.release()

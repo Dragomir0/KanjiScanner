@@ -16,7 +16,7 @@ Uses your camera to capture and extract Japanese characters and copies them to t
 - Python 3.10+
 - A working webcam (preferably run on native Windows)
 
-### 🧪 Python Dependencies
+### Configuration
 
 Install via pip:
 
@@ -35,4 +35,3 @@ Make sure your camera works in your current environment as WSL2 does not support
 This work would not have been possible without amazing open source AI work:
 - [Surya OCR](https://github.com/VikParuchuri/surya) 
 - [Tesseract OCR](https://github.com/tesseract-ocr/tesseract)
-

@@ -2,3 +2,4 @@ ocrvenv/
 .venv/
 venv/
 tesseract.py
+.vscode

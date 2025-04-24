@@ -1,16 +1,13 @@
-# 🈶 KanjiScanner: Real-Time Japanese OCR & Translation Assistant
+# KanjiScanner: Real-Time Japanese OCR & Texthooker
 
-KanjiScanner is a Python-based OCR tool designed for real-time scanning to recognize and scan physical Japanese text that might be hard to read otherwise
+OCR tool designed for real-time scanning of Japanese text. 
 
-It uses any camera to capture and extract Japanese characters by implementing the Surya image OCR toolkit and adapting it to Japanese Text. 
+Uses your camera to capture and extract Japanese characters and copies them to the clipboard, allowing them to be read easily on a texthooker page with Yomichan for exmaple.
 
----
+## Features
 
-## 🚀 Features
-
-<!-- -  Configurable webcam capture steps -->
 -  Automatically copies recognized text to clipboard to use to any Texthooker
--  Saving of captured frames
+-  Saves captured frames
 
 ---
 
@@ -31,7 +28,7 @@ python main.py
 
 ## Notes
 
-Make sure your camera works in your current environment as WSL2 does not support direct webcam usage.
+Make sure your camera works in your current environment as WSL2 does not support direct camera usage.
 
 ## Thanks
 

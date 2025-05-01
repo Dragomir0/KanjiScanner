@@ -4,11 +4,14 @@ OCR tool designed for real-time scanning of Japanese text.
 
 Uses your camera to capture and extract Japanese characters, copying them to the clipboard which then allows them to be read easily on a texthooker page.
 
+## 🎬 Demo workflow
+
+
+
 ## 📦 Requirements
 
 - Python 3.10+
 - A working webcam (preferably run on native Windows)
-
 
 ## ⚙️ Recommended workflow
 
@@ -21,14 +24,9 @@ Uses your camera to capture and extract Japanese characters, copying them to the
 Install via pip in the project directory:
 
 ```bash
-pip install opencv-python 
 pip install -r requirements.txt
 python main.py
 ```
-
-## Notes
-
-Make sure your camera works in your current environment as WSL2 does not support direct camera usage.
 
 ## Thanks
 

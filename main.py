@@ -13,14 +13,34 @@ from datetime import datetime
 def extract_japanese(text):
     return "".join(re.findall(r'[\u3040-\u30FF\u4E00-\u9FFF]+', text))
 
-if __name__ == "__main__":
-    
+# Currently plugged cameras listings
+def list_available_cameras(max_index=10):
+    available_cameras = []
+    for index in range(max_index):
+        cap = cv2.VideoCapture(index)
+        if cap.isOpened():
+            available_cameras.append(index)
+            cap.release()
+    return available_cameras
+
+if __name__ == "__main__":    
     # Load models
     recognition_predictor = RecognitionPredictor()
     detection_predictor = DetectionPredictor()
 
-    # Start camera capture
-    cap = cv2.VideoCapture(0)
+    # Prompt user for camera choice
+    print("Started Kanji Scanner, choose the input camera from the list below:")
+    cameras = list_available_cameras()
+    if cameras:
+        print("📷 Available camera indices:")
+        for cam in cameras:
+            print(f"  -> Camera {cam}")
+    else:
+        print("❌ No camera detected")
+    cameraPort = int(input())
+
+    # Start camera capture, default 0
+    cap = cv2.VideoCapture(cameraPort)
     if not cap.isOpened():
         print("❌ Failed to open camera")
         exit()
@@ -71,7 +91,7 @@ if __name__ == "__main__":
         cap.release()
         cv2.destroyAllWindows()
 
-    # Image Processing: 
+    # Image Processing workflow: 
     # image = Image.open("samples/kanji2.png")
 
     # # Load models

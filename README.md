@@ -2,23 +2,23 @@
 
 OCR tool designed for real-time scanning of Japanese text. 
 
-Uses your camera to capture and extract Japanese characters and copies them to the clipboard, allowing them to be read easily on a texthooker page with Yomichan for exmaple.
-
-## Features
-
--  Automatically copies recognized text to clipboard to use to any Texthooker
--  Saves captured frames
-
----
+Uses your camera to capture and extract Japanese characters, copying them to the clipboard which then allows them to be read easily on a texthooker page.
 
 ## 📦 Requirements
 
 - Python 3.10+
 - A working webcam (preferably run on native Windows)
 
-### Configuration
 
-Install via pip:
+## ⚙️ Recommended workflow
+
+- [Yomitan](https://github.com/yomidevs/yomitan)
+- [Texthooking page](https://anacreondjt.gitlab.io/texthooker.html)
+- [Clipboard Inserter](https://chromewebstore.google.com/detail/clipboard-inserter/deahejllghicakhplliloeheabddjajm?hl=en-US) (for automatic text pasting to the texthooker)
+
+### Installation
+
+Install via pip in the project directory:
 
 ```bash
 pip install opencv-python 

@@ -14,13 +14,16 @@ def extract_japanese(text):
     return "".join(re.findall(r'[\u3040-\u30FF\u4E00-\u9FFF]+', text))
 
 # Currently plugged cameras listings
-def list_available_cameras(max_index=10):
+# TODO: Correct invalid camera indices printed by OpenCV's internal C++ backend
+def list_available_cameras(max_index=5):
     available_cameras = []
     for index in range(max_index):
         cap = cv2.VideoCapture(index)
-        if cap.isOpened():
-            available_cameras.append(index)
+        if cap is None or not cap.isOpened():
             cap.release()
+            continue
+        available_cameras.append(index)
+        cap.release()
     return available_cameras
 
 if __name__ == "__main__":    
@@ -29,10 +32,10 @@ if __name__ == "__main__":
     detection_predictor = DetectionPredictor()
 
     # Prompt user for camera choice
-    print("Started Kanji Scanner, choose the input camera from the list below:")
     cameras = list_available_cameras()
+    print("Started Kanji Scanner, choose the input camera from the list below:")
     if cameras:
-        print("📷 Available camera indices:")
+        print("📷 Available cameras found:")
         for cam in cameras:
             print(f"  -> Camera {cam}")
     else:
@@ -55,10 +58,10 @@ if __name__ == "__main__":
                 print("❌ Frame capture failed.")
                 break
 
-            # Convert OpenCV BGR to PIL RGB format
+            # Convert OpenCV BGR to PIL RGB format, without it the colors are inverted!
             image = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
 
-            # Run OCR
+            # Run OCR with japanese text configuration
             predictions = recognition_predictor([image], [["ja"]], detection_predictor)
 
             # Extract and print clean Japanese text

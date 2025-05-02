@@ -3,3 +3,4 @@ ocrvenv/
 venv/
 tesseract.py
 .vscode
+scans/

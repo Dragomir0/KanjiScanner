@@ -13,7 +13,7 @@ https://github.com/user-attachments/assets/b595812e-1d5a-4ce8-a97c-39d05fc9e1ba
 - Python 3.10+
 - A working camera
 
-## ⚙️ Recommended workflow
+## ⚙️ Recommended addons
 
 - [Yomitan](https://github.com/yomidevs/yomitan)
 - [Clipboard Inserter](https://chromewebstore.google.com/detail/clipboard-inserter/deahejllghicakhplliloeheabddjajm?hl=en-US) (for automatic text pasting to the texthooker)

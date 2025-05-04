@@ -2,5 +2,5 @@ ocrvenv/
 .venv/
 venv/
 tesseract.py
-.vscode
+old.py
 scans/

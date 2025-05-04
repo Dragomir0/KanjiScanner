@@ -1,4 +1,4 @@
-# KanjiScanner: Real-Time Japanese OCR & Texthooker
+# KanjiScanner: Real-Time Japanese OCR
 
 OCR tool designed for real-time scanning of Japanese text. 
 
@@ -11,22 +11,31 @@ Uses your camera to capture and extract Japanese characters, copying them to the
 ## 📦 Requirements
 
 - Python 3.10+
-- A working webcam (preferably run on native Windows)
+- A working camera
 
 ## ⚙️ Recommended workflow
 
 - [Yomitan](https://github.com/yomidevs/yomitan)
-- [Texthooking page](https://anacreondjt.gitlab.io/texthooker.html)
 - [Clipboard Inserter](https://chromewebstore.google.com/detail/clipboard-inserter/deahejllghicakhplliloeheabddjajm?hl=en-US) (for automatic text pasting to the texthooker)
+- [Texthooking page](https://anacreondjt.gitlab.io/texthooker.html) or included texthooker.html for offline 
 
 ### Installation
 
-Install via pip in the project directory:
+#### For Windows
 
+1. **Clone** or download the project, then open PowerShell in that folder.  
+1. Run the `run.bat` which installs the virtual environment, dependencies and starts the scanner.
+2. Open the `texthooker.html` if necessary for scanned text output.
+
+#### For Linux
+
+1. **Clone** or download the project, then open a terminal in that folder.  
+2. **Install** using make:
 ```bash
-pip install -r requirements.txt
-python main.py
+make install  
+make run       
 ```
+3. Open the `texthooker.html` if necessary for scanned text output.
 
 ## Thanks
 

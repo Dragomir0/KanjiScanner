@@ -6,7 +6,7 @@ Uses your camera to capture and extract Japanese characters, copying them to the
 
 ## 🎬 Demo workflow
 
-
+https://github.com/user-attachments/assets/b595812e-1d5a-4ce8-a97c-39d05fc9e1ba
 
 ## 📦 Requirements
 

@@ -1,6 +1,6 @@
 ocrvenv/
 .venv/
 venv/
-tesseract.py
-old.py
 scans/
+old/
+.vscode/

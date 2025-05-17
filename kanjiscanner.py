@@ -2,7 +2,8 @@ import re
 import os
 import cv2
 import customtkinter as ctk
-from PIL import Image, ImageTk
+from customtkinter import CTkImage
+from PIL import Image
 from surya.recognition import RecognitionPredictor
 from surya.detection import DetectionPredictor
 import pyperclip
@@ -140,13 +141,15 @@ class KanjiScannerApp(ctk.CTk):
             # Display scanned camera frame
             # Convert OpenCV BGR to PIL RGB format, without it the colors are inverted!
             image = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
-            img_tk = ImageTk.PhotoImage(image=image)
-            self.video_label.configure(image=img_tk)
-            self.video_label.image = img_tk
+            w, h = image.width, image.height
+            ctk_img = CTkImage(light_image=image, dark_image=image, size=(w, h))
+
+            self.video_label.configure(image=ctk_img)
+            self.video_label.image = ctk_img
 
             # Perform OCR with japanese configuration
-            preds = self.rec([image], [["ja"]], self.det)
-            lines = preds[0].text_lines # list of TextLine objects
+            preds = self.rec([image], ["ocr_without_boxes"], self.det)
+            lines = preds[0].text_lines
 
             # Detect vertical orientation, by default lines ordered horizontally
             if is_vertical(lines):
